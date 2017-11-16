@@ -6,7 +6,7 @@
 #define SORTING_METHODS_BUBBLESORT_H
 
 
-#include "api/SortingMethod.h"
+#include "../../api/SortingMethod.h"
 
 class BubbleSort : public SortingMethod {
 public:
