@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    vector<int> array = {7, 5, 17, 0, 100, 1000, 1000, 12, 1, 6, 4};
+    vector<int> array = {7, 5, 17, 0};
 
     SortingMethod *sortingMethod = new QuickSort(array);
     sortingMethod->sortArray();
