@@ -4,7 +4,7 @@
 
 #include "SortingMethod.h"
 
-#include <c++/iostream>
+#include <iostream>
 #include <utility>
 
 using namespace std;
@@ -17,6 +17,10 @@ const vector<int> &SortingMethod::getArray() const {
 
 void SortingMethod::sortArray() {
     cout << "Called abstract class method" << endl;
+}
+
+int SortingMethod::size() {
+    return static_cast<int>(array.size());
 }
 
 SortingMethod::~SortingMethod() = default;
