@@ -7,54 +7,47 @@
 
 using namespace std;
 
-QuickSort::QuickSort(const vector<int> &array) : SortingMethod(array) {}
+QuickSort::QuickSort(int *array, int size) : SortingMethod(array, size) {}
 
 void QuickSort::sortArray() {
     int lowerBound = 0;
-    int upperBound = this->size() - 1;
+    int upperBound = size - 1;
 
     quickSort(array, lowerBound, upperBound);
 }
 
-void QuickSort::quickSort(vector<int> &array, int lowerBound, int upperBound) {
-    if (lowerBound < upperBound) {
-        int p = partition(array, lowerBound, upperBound);
-
-        quickSort(array, lowerBound, p - 1);
-        quickSort(array, p, upperBound);
+void QuickSort::quickSort(int *array, int lowerBound, int upperBound) {
+    if (lowerBound >= upperBound) {
+        return;
     }
+    int p = partition(array, lowerBound, upperBound);
+
+    quickSort(array, lowerBound, p - 1);
+    quickSort(array, p + 1, upperBound);
 }
 
-int QuickSort::partition(vector<int> &array, int lowerBound, int upperBound) {
-    int pivot = getPivot(array, lowerBound, upperBound);
-
-    int i = lowerBound - 1;
-
-    for (int j = lowerBound; j < upperBound - 1; ++j) {
-        if (array[j] < pivot) {
+int QuickSort::partition(int *array, const int lowerBound, const int upperBound) {
+    const int mid = lowerBound + (upperBound - lowerBound) / 2;
+    const int pivot = array[mid];
+    // move the mid point value to the front.
+    swap(array[mid], array[lowerBound]);
+    int i = lowerBound + 1;
+    int j = upperBound;
+    while (i <= j) {
+        while (i <= j && array[i] <= pivot) {
             i++;
+        }
+
+        while (i <= j && array[j] > pivot) {
+            j--;
+        }
+
+        if (i < j) {
             swap(array[i], array[j]);
         }
     }
-    if (array[upperBound] < array[i + 1]) {
-        swap(array[i + 1], array[upperBound]);
-    }
-
-    return i + 1;
+    swap(array[i - 1], array[lowerBound]);
+    return i - 1;
 }
 
-int QuickSort::getPivot(vector<int> &array, int lowerBound, int upperBound) {
-    /* //the random device that will seed the generator
-     random_device seeder;
 
-     //then make a mersenne twister engine
-     mt19937 engine(seeder());
-
-     //then the easy part... the distribution
-     uniform_int_distribution<int> dist(lowerBound, upperBound);
-
-     //then just generate the integer like this:
-     int idx = dist(engine);*/
-
-    return array[upperBound];
-}

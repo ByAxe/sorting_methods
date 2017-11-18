@@ -5,23 +5,26 @@
 #include "SortingMethod.h"
 
 #include <iostream>
-#include <utility>
 
 using namespace std;
 
-SortingMethod::SortingMethod(vector<int> array) : array(std::move(array)) {}
-
-const vector<int> &SortingMethod::getArray() const {
-    return array;
-}
 
 void SortingMethod::sortArray() {
     cout << "Called abstract class method" << endl;
 }
 
-int SortingMethod::size() {
-    return static_cast<int>(array.size());
+vector<int> SortingMethod::getArray() {
+    vector<int> returningValue(static_cast<unsigned long>(size));
+
+    for (int i = 0; i < size; ++i) {
+        returningValue[i] = this->array[i];
+    }
+
+    return returningValue;
 }
+
+
+SortingMethod::SortingMethod(int *array, int size) : array(array), size(size) {}
 
 SortingMethod::~SortingMethod() = default;
 

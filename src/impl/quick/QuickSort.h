@@ -10,7 +10,8 @@
 
 class QuickSort : public SortingMethod {
 public:
-    explicit QuickSort(const vector<int> &array);
+
+    QuickSort(int *array, int size);
 
     void sortArray() override;
 
@@ -27,7 +28,7 @@ private:
      * @param lowerBound of a given array
      * @param upperBound of a given array
      */
-    void quickSort(vector<int> &array, int lowerBound, int upperBound);
+    void quickSort(int *array, int lowerBound, int upperBound);
 
     /**
      * Splits an array so that all elements those are bigger than current one
@@ -39,16 +40,9 @@ private:
      * @param upperBound of a given array
      * @return
      */
-    int partition(vector<int> &array, int lowerBound, int upperBound);
+    int partition(int *array, int lowerBound, int upperBound);
 
-    /**
-     * Randomly chooses element from an array of given bounds
-     * @param array that have to be sorted
-     * @param lowerBound of a given array
-     * @param upperBound of a given array
-     * @return
-     */
-    int getPivot(vector<int> &array, int lowerBound, int upperBound);
+    void print(int *a, int n);
 
 };
 

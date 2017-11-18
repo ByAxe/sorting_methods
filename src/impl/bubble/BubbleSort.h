@@ -10,7 +10,7 @@
 
 class BubbleSort : public SortingMethod {
 public:
-    explicit BubbleSort(const vector<int> &array);
+    explicit BubbleSort(int *array);
 
     void sortArray() override;
 

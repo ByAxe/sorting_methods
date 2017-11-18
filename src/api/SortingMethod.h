@@ -10,8 +10,7 @@ using namespace std;
 
 class SortingMethod {
 public:
-
-    explicit SortingMethod(vector<int> array);
+    explicit SortingMethod(int *array, int size);
 
     /**
      * Sorts given in constructor array with specified method in concrete implementation
@@ -22,21 +21,15 @@ public:
      * Getter for an array
      * @return
      */
-    const vector<int> &getArray() const;
+    vector<int> getArray();
 
     virtual ~SortingMethod();
 
 protected:
 
-    /**
-    * @return size of given in constructor array
-    */
-    virtual int size();
+    int *array;
 
-    /**
-     * Array that will be used in implementation
-     */
-    vector<int> array;
+    int size;
 };
 
 
