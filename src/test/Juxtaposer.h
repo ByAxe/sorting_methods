@@ -29,7 +29,7 @@ private:
 
     SortingMethod *heapSort(int *array);
 
-    SortingMethod *blockSort(int *array);
+    SortingMethod *cycleSort(int *array);
 
     void displayArray(int *array);
 
