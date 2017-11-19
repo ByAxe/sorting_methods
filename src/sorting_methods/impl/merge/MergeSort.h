@@ -15,11 +15,9 @@ public:
     void sortArray() override;
 
 private:
-    void mergeHelper(int *array, int left, int right, int *scratch);
+    void merge(int *arr, int l, int m, int r);
 
-    int mergeSort(int *array, int size);
-
-    void revertArray();
+    void mergeSort(int *arr, int l, int r);
 };
 
 

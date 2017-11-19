@@ -10,6 +10,7 @@
 #include "../sorting_methods/impl/bubble/BubbleSort.h"
 #include "../sorting_methods/impl/quick/QuickSort.h"
 #include "../sorting_methods/impl/merge/MergeSort.h"
+#include "../sorting_methods/impl/heap/HeapSort.h"
 
 
 void Juxtaposer::juxtapose() {
@@ -75,6 +76,16 @@ void Juxtaposer::testAllMethods(bool showArrays) {
 
     // -------------------------------------------------
 
+    copy(unsortedArray, sortedArray);
+    sortingMethod = heapSort(sortedArray);
+    sortingMethod->sortArray();
+    if (showArrays) {
+        cout << "\n Heap sorting result: ";
+        sortingMethod->display();
+    }
+
+    // -------------------------------------------------
+
 }
 
 void Juxtaposer::copy(const int *source, int *target) {
@@ -111,6 +122,10 @@ SortingMethod *Juxtaposer::quickSort(int *array) {
 
 SortingMethod *Juxtaposer::mergeSort(int *array) {
     return new MergeSort(array, size);
+}
+
+SortingMethod *Juxtaposer::heapSort(int *array) {
+    return new HeapSort(array, size);
 }
 
 Juxtaposer::~Juxtaposer() = default;
