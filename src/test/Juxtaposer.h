@@ -17,6 +17,13 @@ public:
     virtual ~Juxtaposer();
 
 private:
+    struct Info {
+        Info(const string &title, long speed);
+
+        string title;
+        long speed;
+    };
+
     int size;
 
     SortingMethod *binaryTreeSort(int *array);
@@ -30,6 +37,8 @@ private:
     SortingMethod *heapSort(int *array);
 
     SortingMethod *cycleSort(int *array);
+
+    SortingMethod *selectionSort(int *array);
 
     void displayArray(int *array);
 

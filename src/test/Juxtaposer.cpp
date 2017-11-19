@@ -12,6 +12,7 @@
 #include "../sorting_methods/impl/merge/MergeSort.h"
 #include "../sorting_methods/impl/heap/HeapSort.h"
 #include "../sorting_methods/impl/cycle/CycleSort.h"
+#include "../sorting_methods/impl/selection/SelectionSort.h"
 
 
 void Juxtaposer::juxtapose() {
@@ -95,6 +96,16 @@ void Juxtaposer::testAllMethods(bool showArrays) {
 
     // -------------------------------------------------
 
+    copy(unsortedArray, sortedArray);
+    sortingMethod = selectionSort(sortedArray);
+    sortingMethod->sortArray();
+    if (showArrays) {
+        cout << "\n Selection sorting result: ";
+        sortingMethod->display();
+    }
+
+    // -------------------------------------------------
+
 }
 
 void Juxtaposer::copy(const int *source, int *target) {
@@ -141,4 +152,10 @@ SortingMethod *Juxtaposer::cycleSort(int *array) {
     return new CycleSort(array, size);
 }
 
+SortingMethod *Juxtaposer::selectionSort(int *array) {
+    return new SelectionSort(array, size);
+}
+
 Juxtaposer::~Juxtaposer() = default;
+
+Juxtaposer::Info::Info(const string &title, long speed) : title(title), speed(speed) {}
