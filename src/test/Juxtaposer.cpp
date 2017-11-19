@@ -34,7 +34,6 @@ void Juxtaposer::testAllMethods(bool showArrays) {
     // -------------------------------------------------
 
 
-/*
     copy(unsortedArray, sortedArray);
     sortingMethod = binaryTreeSort(sortedArray);
     sortingMethod->sortArray();
@@ -42,7 +41,6 @@ void Juxtaposer::testAllMethods(bool showArrays) {
         cout << "\n Binary Tree sorting result: ";
         sortingMethod->display();
     }
-*/
 
     // -------------------------------------------------
 

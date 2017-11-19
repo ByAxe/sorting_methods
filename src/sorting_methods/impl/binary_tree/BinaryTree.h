@@ -14,23 +14,25 @@ public:
 
     void sortArray() override;
 
-    void display() override;
-
 private:
-    void binaryTreeSort(int array[], int size);
-
-    struct node {
-        int currentValue;
-        node *Left, *Right;
+    struct Node {
+        int key;
+        struct Node *left, *right;
     };
 
-    void insert1(int);
+    // A utility function to create a new BST Node
+    struct Node *newNode(int item) {
+        auto *temp = new Node;
+        temp->key = item;
+        temp->left = temp->right = nullptr;
+        return temp;
+    }
 
-    node *insert2(node *, node *);
+    void binaryTreeSort(int array[], int size);
 
-    void display(node *t);
+    Node *insert(Node *node, int key);
 
-    node *root;
+    void storeSorted(Node *root, int arr[], int &i);
 };
 
 

@@ -5,52 +5,51 @@
 #include <iostream>
 #include "BinaryTree.h"
 
+using namespace std;
+
 BinaryTree::BinaryTree(int *array, int size) : SortingMethod(array, size) {}
 
 void BinaryTree::sortArray() {
     binaryTreeSort(array, size);
 }
 
-void BinaryTree::binaryTreeSort(int *array, int size) {
-    for (int i = 0; i < size; i++) {
-        insert1(array[i]);
+// Stores inoder traversal of the BST
+// in arr[]
+void BinaryTree::storeSorted(BinaryTree::Node *root, int arr[], int &i) {
+    if (root != nullptr) {
+        storeSorted(root->left, arr, i);
+        arr[i++] = root->key;
+        storeSorted(root->right, arr, i);
     }
 }
 
-BinaryTree::node *BinaryTree::insert2(BinaryTree::node *temp, node *newNode) {
-    if (temp == nullptr) {
-        temp = newNode;
-    } else if (temp->currentValue < newNode->currentValue) {
-        insert2(temp->Right, newNode);
-        if (temp->Right == nullptr)
-            temp->Right = newNode;
-    } else {
-        insert2(temp->Left, newNode);
-        if (temp->Left == nullptr)
-            temp->Left = newNode;
-    }
-    return temp;
+/* A utility function to insert a new
+   Node with given key in BST */
+BinaryTree::Node *BinaryTree::insert(BinaryTree::Node *node, int key) {
+    /* If the tree is empty, return a new Node */
+    if (node == nullptr) return newNode(key);
+
+    /* Otherwise, recur down the tree */
+    if (key < node->key)
+        node->left = insert(node->left, key);
+    else if (key > node->key)
+        node->right = insert(node->right, key);
+
+    /* return the (unchanged) Node pointer */
+    return node;
 }
 
-void BinaryTree::insert1(int value) {
-    node *temp = root, *newNode;
-    newNode = new node;
-    newNode->Left = nullptr;
-    newNode->Right = nullptr;
-    newNode->currentValue = value;
-    root = insert2(temp, newNode);
-}
+// This function sorts arr[0..n-1] using Tree Sort
+void BinaryTree::binaryTreeSort(int *arr, int size) {
+    struct BinaryTree::Node *root = nullptr;
 
-void BinaryTree::display() {
-    display(root);
-}
+    // Construct the BST
+    root = insert(root, arr[0]);
+    for (int i = 1; i < size; i++)
+        insert(root, arr[i]);
 
-void BinaryTree::display(node *t) {
-    if (root == nullptr) {
-        cout << "Nothing to display";
-    } else if (t != nullptr) {
-        display(t->Left);
-        cout << t->currentValue << " ";
-        display(t->Right);
-    }
+    // Store inoder traversal of the BST
+    // in arr[]
+    int i = 0;
+    storeSorted(root, arr, i);
 }
