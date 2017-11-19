@@ -4,11 +4,15 @@
 
 #ifndef SORTING_METHODS_JUXTAPOSER_H
 #define SORTING_METHODS_JUXTAPOSER_H
+#define fw(what) std::forward<decltype(what)>(what)
 
 
 #include "../sorting_methods/api/SortingMethod.h"
+#include <chrono>
 
 class Juxtaposer {
+
+
 public:
     void juxtapose();
 
@@ -17,13 +21,6 @@ public:
     virtual ~Juxtaposer();
 
 private:
-    struct Info {
-        Info(const string &title, long speed);
-
-        string title;
-        long speed;
-    };
-
     int size;
 
     SortingMethod *binaryTreeSort(int *array);
@@ -47,5 +44,7 @@ private:
     void copy(const int *source, int *target);
 };
 
+
+#undef fw
 
 #endif //SORTING_METHODS_JUXTAPOSER_H
