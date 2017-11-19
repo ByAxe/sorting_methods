@@ -26,6 +26,12 @@ vector<int> SortingMethod::getArray() {
 
 SortingMethod::SortingMethod(int *array, int size) : array(array), size(size) {}
 
+void SortingMethod::display() {
+    for (int i = 0; i < size; ++i) {
+        cout << array[i] << " ";
+    }
+}
+
 SortingMethod::~SortingMethod() = default;
 
 

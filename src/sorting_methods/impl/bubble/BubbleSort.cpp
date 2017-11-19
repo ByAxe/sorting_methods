@@ -5,8 +5,7 @@
 #include <iostream>
 #include "BubbleSort.h"
 
-BubbleSort::BubbleSort(int *array) : SortingMethod(array, 0) {}
-
+BubbleSort::BubbleSort(int *array, int size) : SortingMethod(array, size) {}
 
 void BubbleSort::sortArray() {
     bubbleSort();
@@ -21,5 +20,6 @@ void BubbleSort::bubbleSort() {
         }
     }
 }
+
 
 

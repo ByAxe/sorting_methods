@@ -10,7 +10,7 @@
 
 class BubbleSort : public SortingMethod {
 public:
-    explicit BubbleSort(int *array);
+    explicit BubbleSort(int *array, int size);
 
     void sortArray() override;
 

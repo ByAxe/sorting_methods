@@ -25,6 +25,8 @@ public:
 
     virtual ~SortingMethod();
 
+    virtual void display();
+
 protected:
 
     int *array;
