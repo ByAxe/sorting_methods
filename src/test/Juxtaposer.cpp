@@ -19,12 +19,22 @@ void Juxtaposer::juxtapose() {
 }
 
 void Juxtaposer::testAllMethods(bool showArrays) {
-    size = 100000;
+    size = enterNumber();
+
+    cout << "The array of size " << size
+         << " will be generated randomly between "
+         << INT16_MIN
+         << " and "
+         << INT16_MAX << endl;
 
     auto *unsortedArray = new int[size];
     auto *sortedArray = new int[size];
     generateArray(unsortedArray, size);
 
+    cout << "\n\tFew numbers from generated (unsorted) array:"
+         << "\n\ta[0] = " << unsortedArray[0] << ";"
+         << " a[1] = " << unsortedArray[10] << ";"
+         << " ... a[" << size - 1 << "] = " << unsortedArray[size - 1] << ";";
 
     if (showArrays) {
         displayArray(unsortedArray);
@@ -214,6 +224,12 @@ SortingMethod *Juxtaposer::cycleSort(int *array) {
 
 SortingMethod *Juxtaposer::selectionSort(int *array) {
     return new SelectionSort(array, size);
+}
+
+int Juxtaposer::enterNumber() {
+    cout << "Enter the size of a randomly generated array: ";
+    cin >> size;
+    return size;
 }
 
 Juxtaposer::~Juxtaposer() = default;

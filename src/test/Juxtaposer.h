@@ -42,6 +42,8 @@ private:
     int *generateArray(int *array, int size, int min = INT16_MIN, int max = INT16_MAX);
 
     void copy(const int *source, int *target);
+
+    int enterNumber();
 };
 
 
