@@ -5,7 +5,8 @@ using namespace std;
 
 int main() {
     auto *juxtaposer = new Juxtaposer();
-    juxtaposer->testAllMethods(false);
-
+    juxtaposer->juxtapose();
+    char r;
+    cin >> r;
     return 0;
 }
