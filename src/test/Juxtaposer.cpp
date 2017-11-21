@@ -21,17 +21,17 @@ void Juxtaposer::juxtapose() {
 void Juxtaposer::testAllMethods(bool showArrays) {
     size = enterNumber();
 
-    cout << "The array of size " << size
-         << " will be generated randomly between "
+    cout << "Будет сгенерирован массив размера: " << size
+         << " из множества случайных чисел, в диапазоне от "
          << INT16_MIN
-         << " and "
+         << " до "
          << INT16_MAX << endl;
 
     auto *unsortedArray = new int[size];
     auto *sortedArray = new int[size];
     generateArray(unsortedArray, size);
 
-    cout << "\n\tFew numbers from generated (unsorted) array:"
+    cout << "\n\tНесколько сгенерированных чисел из (неотсортированного) массива:"
          << "\n\ta[0] = " << unsortedArray[0] << ";"
          << " a[1] = " << unsortedArray[10] << ";"
          << " ... a[" << size - 1 << "] = " << unsortedArray[size - 1] << ";";
@@ -42,7 +42,7 @@ void Juxtaposer::testAllMethods(bool showArrays) {
 
     SortingMethod *sortingMethod;
 
-    cout << "\n\n\tTitle\t\t\tElapsed time (in milliseconds)";
+    cout << "\n\n\tНазвание метода\t\t\tЗатраченное время (в миллисекундах)";
 
     // -------------------------------------------------
 
@@ -55,7 +55,7 @@ void Juxtaposer::testAllMethods(bool showArrays) {
     clock_t stop = clock();
 
     auto elapsed = static_cast<long>((stop - start) * 1000.0 / CLOCKS_PER_SEC);
-    cout << "\n\tBinaryTree\t\t" << elapsed;
+    cout << "\n\tДвоичное дерево\t\t" << elapsed;
 
     if (showArrays) {
         cout << "\n Binary Tree sorting result: ";
@@ -73,7 +73,7 @@ void Juxtaposer::testAllMethods(bool showArrays) {
     stop = clock();
 
     elapsed = static_cast<long>((stop - start) * 1000.0 / CLOCKS_PER_SEC);
-    cout << "\n\tBubble\t\t\t" << elapsed;
+    cout << "\n\tПузырьковая\t\t\t" << elapsed;
 
     if (showArrays) {
         cout << "\n Bubble sorting result: ";
@@ -91,7 +91,7 @@ void Juxtaposer::testAllMethods(bool showArrays) {
     stop = clock();
 
     elapsed = static_cast<long>((stop - start) * 1000.0 / CLOCKS_PER_SEC);
-    cout << "\n\tQuick\t\t\t" << elapsed;
+    cout << "\n\tБыстрая\t\t\t" << elapsed;
 
 
     if (showArrays) {
@@ -110,7 +110,7 @@ void Juxtaposer::testAllMethods(bool showArrays) {
     stop = clock();
 
     elapsed = static_cast<long>((stop - start) * 1000.0 / CLOCKS_PER_SEC);
-    cout << "\n\tMerge\t\t\t" << elapsed;
+    cout << "\n\tСлиянием\t\t\t" << elapsed;
 
 
     if (showArrays) {
@@ -129,7 +129,7 @@ void Juxtaposer::testAllMethods(bool showArrays) {
     stop = clock();
 
     elapsed = static_cast<long>((stop - start) * 1000.0 / CLOCKS_PER_SEC);
-    cout << "\n\tHeap\t\t\t" << elapsed;
+    cout << "\n\tПирамидальная\t\t\t" << elapsed;
 
 
     if (showArrays) {
@@ -148,7 +148,7 @@ void Juxtaposer::testAllMethods(bool showArrays) {
     stop = clock();
 
     elapsed = static_cast<long>((stop - start) * 1000.0 / CLOCKS_PER_SEC);
-    cout << "\n\tCycle\t\t\t" << elapsed;
+    cout << "\n\tЦиклическая\t\t\t" << elapsed;
 
 
     if (showArrays) {
@@ -167,7 +167,7 @@ void Juxtaposer::testAllMethods(bool showArrays) {
     stop = clock();
 
     elapsed = static_cast<long>((stop - start) * 1000.0 / CLOCKS_PER_SEC);
-    cout << "\n\tSelection\t\t" << elapsed;
+    cout << "\n\tВыборочная\t\t" << elapsed;
 
 
     if (showArrays) {
@@ -176,6 +176,8 @@ void Juxtaposer::testAllMethods(bool showArrays) {
     }
 
     // -------------------------------------------------
+
+    cout << "\nНаиболее эффективным методом сортировки является - Быстрая сортировка" << endl;
 }
 
 void Juxtaposer::copy(const int *source, int *target) {
@@ -227,7 +229,7 @@ SortingMethod *Juxtaposer::selectionSort(int *array) {
 }
 
 int Juxtaposer::enterNumber() {
-    cout << "Enter the size of a randomly generated array: ";
+    cout << "Введите размер массива который будет сгенерирован автоматически: ";
     cin >> size;
     return size;
 }
